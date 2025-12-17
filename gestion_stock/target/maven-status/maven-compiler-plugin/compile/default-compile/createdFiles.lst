@@ -1,0 +1,9 @@
+com\stock\Stock\Exception\ErrorResponse.class
+com\stock\Stock\Models\Produits_Stock.class
+com\stock\Stock\Service\StockService.class
+com\stock\Stock\GestionStockApplication.class
+com\stock\Stock\Config\DataInitializer.class
+com\stock\Stock\Exception\GlobalExceptionHandler.class
+com\stock\Stock\Controller\StockController.class
+com\stock\Stock\Repository\ProduitsStockRepository.class
+com\stock\Stock\Config\WebConfig.class
