@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Nouvelle Commande</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="container mt-4">
+    <h2>Nouvelle Commande</h2>
+    
+    <form th:action="@{/commandes/create}" th:object="${commandeRequest}" method="post">
+        
+        <div class="mb-3">
+            <label class="form-label">Client</label>
+            <input type="text" class="form-control" th:field="*{client}" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Produit</label>
+            <select class="form-select" th:field="*{codePdt}" required>
+                <option value="">Sélectionner un produit</option>
+                <option th:each="p : ${produits}" 
+                        th:value="${p.codePdt}" 
+                        th:text="${p.nomPdt} + ' - ' + ${p.prixPdt} + ' MAD'"></option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Quantité</label>
+            <input type="number" class="form-control" th:field="*{qteCmd}" min="1" required>
+        </div>
+
+        <button type="submit" class="btn btn-success">Commander</button>
+        <a href="/commandes" class="btn btn-secondary">Annuler</a>
+    </form>
+</body>
+</html>

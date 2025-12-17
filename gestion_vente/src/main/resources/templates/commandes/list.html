@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Liste des Commandes</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="container mt-4">
+    <h2>Liste des Commandes</h2>
+    <div th:if="${success}" class="alert alert-success" th:text="${success}"></div>
+    
+    <a href="/commandes/new" class="btn btn-primary mb-3">Nouvelle Commande</a>
+    
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Client</th>
+                <th>Produit</th>
+                <th>Quantité</th>
+                <th>Total</th>
+                <th>Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="cmd : ${commandes}">
+                <td th:text="${cmd.codeCmd}"></td>
+                <td th:text="${cmd.client}"></td>
+                <td th:text="${cmd.nomPdt}"></td>
+                <td th:text="${cmd.qteCmd}"></td>
+                <td th:text="${cmd.montantTotal}"></td>
+                <td th:text="${cmd.dateCmd}"></td>
+                <td>
+                    <a th:href="@{'/commandes/' + ${cmd.codeCmd} + '/invoice'}" class="btn btn-sm btn-secondary">Facture PDF</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
